@@ -1,0 +1,29 @@
+{
+  "name": "linkedlistnode_practice",
+  "version": "1.0.0",
+  "description": "Linked list is a data structure consisting of a collection of nodes which together represent a sequence.",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elijahmylcev/LinkedListNode.git"
+  },
+  "keywords": [
+    "javascript",
+    "js",
+    "jest",
+    "nodes",
+    "linkedListNodes"
+  ],
+  "author": "Elijah elijahmylcev@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elijahmylcev/LinkedListNode/issues"
+  },
+  "homepage": "https://github.com/elijahmylcev/LinkedListNode#readme",
+  "devDependencies": {
+    "jest": "^27.2.4"
+  }
+}

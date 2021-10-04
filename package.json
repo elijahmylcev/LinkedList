@@ -4,7 +4,7 @@
   "description": "Linked list is a data structure consisting of a collection of nodes which together represent a sequence.",
   "main": "index.js",
   "scripts": {
-    "test:unit": "jest"
+    "test:unit": "jest --watch"
   },
   "repository": {
     "type": "git",

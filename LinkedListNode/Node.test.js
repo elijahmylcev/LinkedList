@@ -1,11 +1,15 @@
 const Node = require('./Node');
-const node = new Node();
-
 const test_string = 'Hello'
+let node = new Node();
+
 
 describe('Node:', () => {
+
+    beforeEach(() => {
+        node = new Node(test_string)
+    });
+
     test('should point to some data', () => {
-        node(test_string)
         expect(node.value).toBeTruthy();
         expect(node.value).toEqual('Hello');
     });
@@ -16,7 +20,11 @@ describe('Node:', () => {
 });
 
 describe('Node.toString():', () => {
+    beforeEach(() => {
+        node = new Node(test_string)
+    });
+
     test('should return a value in a string', () => {
-        expect(node(test_string).toString()).toEqual('value: Hello, next: null');
+        expect(node.toString()).toEqual('value: Hello, next: null');
     })
 });

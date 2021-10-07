@@ -31,7 +31,7 @@ describe('insert(Node, index):', () => {
         expect(list[1] === {value: 'el_test_index=3', next: Object}).toBeTruthy();
     })
     test('should return boolean', () => {
-        expect(list.insert('value-test', 1) === Boolean).toBeTruthy();
+        expect(list.insert('value-test', 1)).toBeTruthy();
     })
 });
 

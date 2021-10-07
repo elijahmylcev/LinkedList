@@ -25,9 +25,9 @@ class LinkedList {
     return this
   }
 
-  insert(value = null, index = null) {
+  insert(value = null, index = this.length - 1) {
     const newNode = new Node(value)
-
+    return true
   }
 
   get(index) {

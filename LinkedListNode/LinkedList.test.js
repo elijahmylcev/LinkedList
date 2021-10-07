@@ -1,23 +1,26 @@
 const LinkedList = require('./LinkedList');
-let list = new LinkedList();
+const Node = require('./Node')
 
 describe('push(Node), Node(value, next):', () => {
+    let list
     beforeEach(() => {
+        list = new LinkedList();
         node = new Node()
     });
     test('inserts an element at the end of the list', () => {
         list.push('vlaue-test')
         list.push('end-string')
-        expect(list[list.length - 1].next).toBeNull();
+        expect(list.tail.next).toBeNull();
     })
     test('should return boolean', () => {
-        expect(list.push('element') === Boolean).toBeTruthy();
+        expect(list.push('element')).toBeTruthy();
     })
 });
 
 describe('insert(Node, index):', () => {
-
+    let list
     beforeEach(() => {
+        list = new LinkedList()
         list.push('el_1')
         list.push('el_2')
         list.push('el_3')
@@ -33,8 +36,9 @@ describe('insert(Node, index):', () => {
 });
 
 describe('get(index):', () => {
-
+    let list
     beforeEach(() => {
+        list = new LinkedList()
         list.push('el_1')
         list.push('el_2')
         list.push('el_3')
@@ -47,15 +51,19 @@ describe('get(index):', () => {
         });
     })
     test('should return null if there is no element with an index', () => {
-        expect(list.get(5)).toBeNull();
+        expect(list.get(7)).toBeNull();
     })
 });
 
 describe('length:', () => {
-    test('getter, returns the actual length of the list', () => {
+    let list
+    beforeEach(() => {
+        list = new LinkedList()
         list.push('el_0')
         list.push('el_1')
         list.push('el_2')
+    })
+    test('getter, returns the actual length of the list', () => {
         expect(list.length).toBe(3);
     })
 });

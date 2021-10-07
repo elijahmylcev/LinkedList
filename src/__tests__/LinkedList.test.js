@@ -104,7 +104,7 @@ describe('toArray() method', () => {
     list.push(new Node('el1'));
     list.push(new Node('el2'));
   test('should return list as Array', () => {
-    const expect = [{value: 'el0', next:{value: 'el1', next:{value: 'el3', next: null}}}]
-    expect(list.toArray()).toEqual(expect.arrayContaining(expect))
+    const expectValue = [{value: 'el0', next:{value: 'el1', next:{value: 'el2', next: null}}}, {value: 'el1', next: {value: 'el2', next: null}}]
+    expect(list.toArray()).toEqual(expect.arrayContaining(expectValue))
   });
 });

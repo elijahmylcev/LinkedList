@@ -54,7 +54,7 @@ class LinkedList {
     let arr = []
     let current = this.root
     
-    while (current) {
+    while (current.next) {
       arr.push(current)
       current = current.next
     }

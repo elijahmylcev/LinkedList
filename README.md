@@ -1,18 +1,18 @@
 # LinkedListNode
 
 **ТЗ:**
-- [ ]  **JS: LinkedList**
-    - [ ]  Собственная библиотека позволяющая работать со связным списком
-        - [ ]  `class LinkedListNode {
+- [x]  **JS: LinkedList**
+    - [x]  Собственная библиотека позволяющая работать со связным списком
+        - [x]  `class LinkedListNode {
           value: number
           next: LinkedListNode | null
         }` → класс элемента списка
-        - [ ]  `push(el: LinkedListNode): boolean` → вставляет элемент в конец списка
-        - [ ]  `insert(el: LinkedListNode, index: number): boolean` → вставляет элемент по индексу
-        - [ ]  `get(index: number): LinkedListNode | null` → возвращает элемент по указанному индексу, или null если такого элемента нет
-        - [ ]  `length: number` → getter, возвращает актуальную длину списка
-    - [ ]  Тесты
-    - [ ]  Отдельный оформленный репозиторий на Github
+        - [x]  `push(el: LinkedListNode): boolean` → вставляет элемент в конец списка
+        - [x]  `insert(el: LinkedListNode, index: number): boolean` → вставляет элемент по индексу
+        - [x]  `get(index: number): LinkedListNode | null` → возвращает элемент по указанному индексу, или null если такого элемента нет
+        - [x]  `length: number` → getter, возвращает актуальную длину списка
+    - [x]  Тесты
+    - [x]  Отдельный оформленный репозиторий на Github
 
 
     **Теория:**

@@ -27,7 +27,15 @@ class LinkedList {
 
   insert(value = null, index = this.length - 1) {
     const newNode = new Node(value)
-    return true
+
+    let arr = this.toArray()
+    const arr_1 = arr.slice(0, index)
+    const arr_2 = arr.slice(index)
+    arr_1.push(newNode)
+    arr_1[arr_1.length -1].next = arr_2[0]
+    const out = arr_1.concat(arr_2)
+
+    return out
   }
 
   get(index) {
@@ -66,8 +74,4 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
-list.push('start')
-list.push('medium')
-list.push('end')
 module.exports = LinkedList

@@ -1,33 +1,25 @@
-const Node = require('./Node')
+const Node = require('./LinkedListNode')
 
 class LinkedList {
   constructor() {
-    this.head = null
-    this.tail = null
+    this.root = null
   }
 
-  push(value) {
-    const newNode = new Node(value);
-
-    if (!this.head || !this.tail) {
-      this.head = newNode;
-      this.tail = newNode;
-
+  push(newNode) {
+    if (!this.root) {
+      this.root = newNode;
       return this;
     }
 
-    this.tail.next = newNode
-    this.tail = newNode
-
-    if (this.tail.next === null && this.tail.value === value) {
-      return true
-    }
+    let current = this.root
+     while (current.next) {
+       current = current.next
+     }
+     current.next = newNode
     return this
   }
 
-  insert(value, index = this.length - 1) {
-    const newNode = new Node(value)
-    let out
+  insert(newNode, index = this.length - 1) {
 
     switch (index) {
       case 0:
@@ -54,16 +46,19 @@ class LinkedList {
   }
 
   get(index) {
-    const set = this.toArray()
-    for (let i = 0; i <= set.length; i++) {
+    if (!this.root) return null
+    if (index > this.length || index < 0) return null
+    let current = this.root
+    let step = 0
 
-      if (index === i) {
-        return set[i]
-      } else if (index > set.length) {
-        return null
-      }
+    while (step < index) {
+      current = current.next
+      step++
     }
+
+    return current
   }
+  
 
   toArray() {
     let arr = []
@@ -77,12 +72,13 @@ class LinkedList {
   }
 
   get length() {
-    let current = this.head
-    let length = 0
+    if(!this.root) return 0
+    let current = this.root
+    let length = 1
 
-    while (current) {
+    while (current.next) {
       current = current.next
-      length++
+      length ++
     }
 
     return length

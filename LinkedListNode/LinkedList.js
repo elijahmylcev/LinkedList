@@ -25,29 +25,32 @@ class LinkedList {
     return this
   }
 
-  insert(value = null, index = this.length - 1) {
+  insert(value, index = this.length - 1) {
     const newNode = new Node(value)
+    let out
 
     switch (index) {
       case 0:
-        this.head.next = this.head
-        this.head = newNode
-        break;
-      case this.length:
-        this.tail.next = newNode
-        this.tail = newNode
+        const node = new Node(value, this.head)
+        this.head = node
+        if (!this.tail) {
+          this.tail = node
+        }      
+        return this
+      case this.length - 1:
+        this.push(value)
+        return this
       default:
-        break;
+        let arr = this.toArray()
+        const arr_1 = arr.slice(0, index)
+        const arr_2 = arr.slice(index)
+        arr_1.push(newNode)
+        arr_1[arr_1.length - 2].next = newNode
+        arr_1[arr_1.length - 1].next = arr_2[0]
+        out = arr_1.concat(arr_2)
+        return out
     }
 
-    let arr = this.toArray()
-    const arr_1 = arr.slice(0, index)
-    const arr_2 = arr.slice(index)
-    arr_1.push(newNode)
-    arr_1[arr_1.length - 1].next = arr_2[0]
-    const out = arr_1.concat(arr_2)
-
-    return out
   }
 
   get(index) {

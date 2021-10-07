@@ -27,9 +27,9 @@ describe('insert(Node, index):', () => {
     })
 
     test('inserts element at index, insert method return array', () => {
-        list.insert('test_string')
-        console.log(list.insert('test string'));
-        expect(list.toArray()[list.length - 1]).toEqual({value: 'el_3', next: null});
+        // list.insert('test_string')
+        list.insert('test string');
+        expect(list.toArray()[list.length - 1]).toEqual({value: 'test string', next: null});
     })
     test('should return boolean', () => {
         expect(list.insert('value-test', 1)).toBeTruthy();

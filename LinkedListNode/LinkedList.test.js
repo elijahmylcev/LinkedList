@@ -26,10 +26,10 @@ describe('insert(Node, index):', () => {
         list.push('el_3')
     })
 
-    test('inserts element at index', () => {
-        list.insert('test_string', list.length -1)
-        console.log(list);
-        expect(list[1]).toEqual({value: 'el_test_index=3', next: [Node]});
+    test('inserts element at index, insert method return array', () => {
+        list.insert('test_string')
+        console.log(list.insert('test string'));
+        expect(list.toArray()[list.length - 1]).toEqual({value: 'el_3', next: null});
     })
     test('should return boolean', () => {
         expect(list.insert('value-test', 1)).toBeTruthy();

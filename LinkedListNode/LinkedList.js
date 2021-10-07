@@ -28,6 +28,18 @@ class LinkedList {
   insert(value = null, index = this.length - 1) {
     const newNode = new Node(value)
 
+    switch (index) {
+      case 0:
+        this.head.next = this.head
+        this.head = newNode
+        break;
+      case this.length:
+        this.tail.next = newNode
+        this.tail = newNode
+      default:
+        break;
+    }
+
     let arr = this.toArray()
     const arr_1 = arr.slice(0, index)
     const arr_2 = arr.slice(index)

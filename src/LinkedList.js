@@ -5,11 +5,15 @@ class LinkedList {
     this.root = null
   }
 
+  appendInTheBeginning(newNode) {
+    if (!this.root) return this.root = newNode;
+    const node = new Node(newNode.value, this.root)
+    this.root = node
+    return this;
+  }
+
   push(newNode) {
-    if (!this.root) {
-      this.root = newNode;
-      return this;
-    }
+    if (!this.root) return this.appendInTheBeginning(newNode)
 
     let current = this.root
      while (current.next) {
@@ -20,29 +24,14 @@ class LinkedList {
   }
 
   insert(newNode, index = this.length - 1) {
-
-    switch (index) {
-      case 0:
-        const node = new Node(value, this.head)
-        this.head = node
-        if (!this.tail) {
-          this.tail = node
-        }      
-        return this
-      case this.length - 1:
-        this.push(value)
-        return this
-      default:
-        let arr = this.toArray()
-        const arr_1 = arr.slice(0, index)
-        const arr_2 = arr.slice(index)
-        arr_1.push(newNode)
-        arr_1[arr_1.length - 2].next = newNode
-        arr_1[arr_1.length - 1].next = arr_2[0]
-        out = arr_1.concat(arr_2)
-        return out
-    }
-
+    if (!this.root) return this.push(newNode)
+    if (index === this.length - 1) return this.push(newNode);
+    if (index === 0) return this.appendInTheBeginning(newNode);
+    const prev = this.get(index - 1)
+    const selected = this.get(index)
+    prev.next = newNode
+    newNode.next = selected
+    return this
   }
 
   get(index) {

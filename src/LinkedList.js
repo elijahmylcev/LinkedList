@@ -50,9 +50,10 @@ class LinkedList {
   
 
   toArray() {
+    if (!this.root) return null;
     let arr = []
-    let current = this.head
-
+    let current = this.root
+    
     while (current) {
       arr.push(current)
       current = current.next

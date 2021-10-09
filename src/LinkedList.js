@@ -1,28 +1,50 @@
 const Node = require('./Node')
 
+// [root].next -> [node].next -> [node].next === null
+
 class LinkedList {
   constructor() {
-    this.head = null
-    this.tail = null
+    this.root = null;
+    // this.tail = null
   }
 
-  push(value) {
-    const newNode = new Node(value);
-
-    if (!this.head || !this.tail) {
-      this.head = newNode;
-      this.tail = newNode;
-
-      return this;
+  push(newNode) {
+    if (!this.root) {
+      this.root = newNode;
+      return true;
     }
 
-    this.tail.next = newNode
-    this.tail = newNode
-
-    if (this.tail.next === null && this.tail.value === value) {
-      return true
+    let current = this.root;
+    
+    while(current.next) {
+      current = current.next;
     }
-    return this
+
+    // current === last
+    current.next = newNode;
+
+    return true;
+
+    // if (this.root === null) {
+    //   // first
+    // }
+    // if (this.root !== null) {
+    //   // last
+    // }
+
+    // if (!this.head || !this.tail) {
+    //   this.head = newNode;
+    //   this.tail = newNode;
+    //   return this;
+    // }
+
+    // this.tail.next = newNode
+    // this.tail = newNode
+
+    // if (this.tail.next === null && this.tail.value === value) {
+    //   return true
+    // }
+    // return this
   }
 
   insert(value, index = this.length - 1) {
@@ -54,15 +76,15 @@ class LinkedList {
   }
 
   get(index) {
-    const set = this.toArray()
-    for (let i = 0; i <= set.length; i++) {
-
-      if (index === i) {
-        return set[i]
-      } else if (index > set.length) {
-        return null
-      }
+    if (!this.root) return null;
+    if (index > this.length || index < 0) return null;
+    let current = this.root;
+    let currentStep = 0;
+    while(current.next && currentStep !== index) {
+      current = current.next;
+      currentStep += 1;
     }
+    return current;
   }
 
   toArray() {
@@ -77,14 +99,13 @@ class LinkedList {
   }
 
   get length() {
-    let current = this.head
-    let length = 0
-
-    while (current) {
+    if (!this.root) return 0;
+    let current = this.root;
+    let length = 1;
+    while (current.next) {
       current = current.next
-      length++
+      length += 1;
     }
-
     return length
   }
 }

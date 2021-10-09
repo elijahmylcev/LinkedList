@@ -1,4 +1,4 @@
-const Node = require('./Node');
+const Node = require('../Node');
 const test_string = 'Hello'
 let node = new Node();
 

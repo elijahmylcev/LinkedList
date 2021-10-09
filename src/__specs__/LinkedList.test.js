@@ -1,5 +1,5 @@
-const LinkedList = require('./LinkedList');
-const Node = require('./Node')
+const LinkedList = require('../LinkedList');
+const Node = require('../Node')
 
 describe('push(Node), Node(value, next):', () => {
     let list

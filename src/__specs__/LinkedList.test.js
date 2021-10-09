@@ -32,23 +32,29 @@ describe('insert(Node, index):', () => {
 
   beforeEach(() => {
     list = new LinkedList();
-    list.push('el_1');
-    list.push('el_2');
-    list.push('el_3');
+    list.push(new Node('el_1'));
+    list.push(new Node('el_2'));
+    list.push(new Node('el_3'));
   });
 
-  test('inserts element at index = length -1', () => {
-    list.insert('test string');
-    expect(list.toArray()[list.length - 1]).toEqual({ value: 'test string', next: null });
+  test('inserts element at the last index', () => {
+    list.insert(new Node('test string'));
+    expect(list.get(list.length - 1).value).toBe('test string');
   });
 
-  test('insert element at index', () => {
-    list.insert('test string', 1);
-    expect(list.toArray()[1]).toStrictEqual(expect.objectContaining({ value: 'test string', next: expect.any(Object) }));
+  test('inserts element at the first index', () => {
+    list.insert(new Node('test string'), 0);
+    expect(list.get(0).value).toBe('test string');
+  });
+
+  test('insert element at on of middle index', () => {
+    list.insert(new Node('test string'), 1);
+    expect(list.get(1)).toStrictEqual(expect.objectContaining({ value: 'test string', next: expect.any(Object) }));
   });
 
   test('should return boolean', () => {
-    expect(list.insert('value-test', 1)).toBeTruthy();
+    const res = list.insert(new Node('value-test'), 1);
+    expect(res).toBeTruthy();
   });
 });
 

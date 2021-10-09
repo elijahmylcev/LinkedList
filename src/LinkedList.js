@@ -5,74 +5,34 @@ const Node = require('./Node')
 class LinkedList {
   constructor() {
     this.root = null;
-    // this.tail = null
+  }
+
+  unshift(newNode) {
+    this.root = newNode;
+    return true;
   }
 
   push(newNode) {
     if (!this.root) {
-      this.root = newNode;
-      return true;
+      return this.unshift(newNode);
     }
-
     let current = this.root;
-    
     while(current.next) {
       current = current.next;
     }
-
-    // current === last
     current.next = newNode;
-
     return true;
-
-    // if (this.root === null) {
-    //   // first
-    // }
-    // if (this.root !== null) {
-    //   // last
-    // }
-
-    // if (!this.head || !this.tail) {
-    //   this.head = newNode;
-    //   this.tail = newNode;
-    //   return this;
-    // }
-
-    // this.tail.next = newNode
-    // this.tail = newNode
-
-    // if (this.tail.next === null && this.tail.value === value) {
-    //   return true
-    // }
-    // return this
   }
 
-  insert(value, index = this.length - 1) {
-    const newNode = new Node(value)
-    let out
-
-    switch (index) {
-      case 0:
-        const node = new Node(value, this.head)
-        this.head = node
-        if (!this.tail) {
-          this.tail = node
-        }      
-        return this
-      case this.length - 1:
-        this.push(value)
-        return this
-      default:
-        let arr = this.toArray()
-        const arr_1 = arr.slice(0, index)
-        const arr_2 = arr.slice(index)
-        arr_1.push(newNode)
-        arr_1[arr_1.length - 2].next = newNode
-        arr_1[arr_1.length - 1].next = arr_2[0]
-        out = arr_1.concat(arr_2)
-        return out
-    }
-
+  insert(newNode, index = this.length - 1) {
+    if (!this.root) return this.push(newNode);
+    if (index === this.length - 1) return this.push(newNode);
+    if (index === 0) return this.unshift(newNode);
+    const prev = this.get(index - 1);
+    const current = this.get(index);
+    prev.next = newNode;
+    newNode.next = current;
+    return true;
   }
 
   get(index) {
@@ -88,14 +48,13 @@ class LinkedList {
   }
 
   toArray() {
-    let arr = []
-    let current = this.head
-
+    const array = [];
+    let current = this.root;
     while (current) {
-      arr.push(current)
-      current = current.next
+      array.push(current);
+      current = current.next;
     }
-    return arr
+    return array;
   }
 
   get length() {
